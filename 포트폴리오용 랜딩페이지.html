@@ -1,0 +1,890 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>권효진 포트폴리오</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.7;
+            background: linear-gradient(135deg, #f7f3f0, #e8ddd4, #d4c5b9);
+            background-size: 400% 400%;
+            animation: softMove 20s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #3a3a3a;
+        }
+
+        @keyframes softMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(180, 160, 140, 0.2);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(180, 160, 140, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #8b6f47;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #d4a574, #c19a6b);
+            border-radius: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #6b5b47;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 16px;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            color: #8b6f47;
+            background: rgba(212, 165, 116, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #4a4a4a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(212, 165, 116, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(193, 154, 107, 0.08) 0%, transparent 50%);
+            animation: gentleFloat 25s ease-in-out infinite;
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(1deg); }
+            66% { transform: translate(-20px, 20px) rotate(-0.5deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            color: #8b6f47;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            color: #a08974;
+            letter-spacing: 3px;
+            animation: fadeInUp 1.2s ease-out 0.3s both;
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            color: #6b5b47;
+            font-weight: 300;
+            line-height: 1.8;
+            animation: fadeInUp 1.2s ease-out 0.6s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 35px;
+            background: linear-gradient(135deg, #d4a574, #c19a6b);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(212, 165, 116, 0.3);
+            animation: fadeInUp 1.2s ease-out 0.9s both;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(212, 165, 116, 0.4);
+            background: linear-gradient(135deg, #c19a6b, #b88a5e);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 6rem 0;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            color: #8b6f47;
+            letter-spacing: 4px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            color: #9b8873;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 12px 25px;
+            border: 1px solid #d4a574;
+            background: rgba(255, 255, 255, 0.8);
+            color: #8b6f47;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(135deg, #d4a574, #c19a6b);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 165, 116, 0.3);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(180, 160, 140, 0.15);
+            transition: all 0.4s ease;
+            height: 320px;
+            cursor: pointer;
+            border: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(180, 160, 140, 0.25);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f5f1ec, #ede6dd);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(212, 165, 116, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(193, 154, 107, 0.1) 0%, transparent 50%);
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+        }
+
+        .portfolio-placeholder {
+            font-size: 3rem;
+            color: #d4a574;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+
+        .portfolio-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: #6b5b47;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .portfolio-info p {
+            color: #9b8873;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .portfolio-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(212, 165, 116, 0.9);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #a08974 0%, #8b6f47 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+            animation: gentleFloat 20s ease-in-out infinite;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-text h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            padding: 10px 18px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            color: white;
+            font-weight: 400;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .skill-tag:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .about-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-circle {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            font-weight: 300;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: gentlePulse 4s ease-in-out infinite;
+            letter-spacing: 2px;
+        }
+
+        @keyframes gentlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background: #f7f3f0;
+            color: #6b5b47;
+            text-align: center;
+            position: relative;
+        }
+
+        .contact h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: #8b6f47;
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            color: #9b8873;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(135deg, #d4a574, #c19a6b);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 400;
+            color: white;
+            letter-spacing: 0.5px;
+            box-shadow: 0 8px 25px rgba(212, 165, 116, 0.3);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(212, 165, 116, 0.4);
+        }
+
+        .contact-icon {
+            width: 28px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+                letter-spacing: 2px;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+                letter-spacing: 2px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .profile-circle {
+                width: 220px;
+                height: 220px;
+                font-size: 3rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation */
+        .loading {
+            opacity: 0;
+            animation: softFadeIn 1s ease-out forwards;
+        }
+
+        @keyframes softFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Paper texture overlay */
+        .paper-texture {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 1px 1px, #8b6f47 1px, transparent 0);
+            background-size: 20px 20px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="paper-texture"></div>
+    
+    <header>
+        <nav class="container">
+            <div class="logo">HyoJin</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#portfolio">Works</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>권효진</h1>
+            <p class="subtitle">Creative Visual Designer</p>
+            <p class="description">브랜딩부터 일상까지, 모든 순간을 디자인으로 풀어내는 크리에이터</p>
+            <a href="#portfolio" class="cta-button">내 작업 구경하기</a>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">My Works</h2>
+            <p class="section-subtitle">상상을 현실로, 일상을 작품으로</p>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">전체</button>
+                <button class="filter-btn" data-filter="branding">브랜딩</button>
+                <button class="filter-btn" data-filter="poster">포스터</button>
+                <button class="filter-btn" data-filter="3d">3D/특수기법</button>
+                <button class="filter-btn" data-filter="web">웹디자인</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- 브랜딩 작업물들 -->
+                <div class="portfolio-item loading" data-category="branding">
+                    <div class="portfolio-tag">브랜딩</div>
+                    <div class="portfolio-image">
+						<img src="색상별로고.png" alt="Seed Studio 로고">
+                        <img src="로고최종.png" alt="Seed Studio 로고" style="width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 2;" 
+                             onerror="this.src='로고최종.jpg'; this.onerror=function(){this.style.display='none'; this.parentElement.innerHTML='<div class=portfolio-placeholder>🌱</div>';}">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Seed Studio 브랜드 아이덴티티</h3>
+                        <p>자연스럽고 친환경적인 느낌의 브랜드 로고 시스템 디자인</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item loading" data-category="branding">
+                    <div class="portfolio-tag">브랜딩</div>
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">✨</div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>감정 캐릭터 브랜딩</h3>
+                        <p>친구들 이름에서 영감받은 귀여운 캐릭터들과 스토리텔링</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item loading" data-category="branding">
+                    <div class="portfolio-tag">브랜딩</div>
+                    <div class="portfolio-image">
+                        <img src="lee_cafe.jpg" alt="Lee Cafe" style="width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 2;" 
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=portfolio-placeholder>☕</div>';">
+                        <img src="이모네.gif" alt="카페로고"> <img src="캐릭터.gif" alt="카페캐릭터">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Lee Cafe 메뉴판 & 브랜딩</h3>
+                        <p>따뜻하고 아늑한 카페 분위기의 메뉴판과 로고 디자인</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item loading" data-category="branding">
+                    <div class="portfolio-tag">브랜딩</div>
+                    <div class="portfolio-image">
+                        <img src="멍스마켓.jpg" alt="멍순이 Market" style="width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 2;" 
+                             onerror="this.src='멍스마켓.png'; this.onerror=function(){this.style.display='none'; this.parentElement.innerHTML='<div class=portfolio-placeholder>🐕</div>';}">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>멍순이 Market 브랜딩</h3>
+                        <p>우리 강아지 멍순이를 모티브로 한 귀여운 펫샵 브랜딩</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item loading" data-category="branding">
+                    <div class="portfolio-tag">브랜딩</div>
+                    <div class="portfolio-image">
+                        <img src="명함시안.png" alt="명함제작">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>JS GYM 명함 디자인</h3>
+                        <p>개인 트레이너를 위한 강렬하고 믿음직한 명함 디자인</p>
+                    </div>
+                </div>
+
+                <!-- 포스터 작업물들 -->
+                <div class="portfolio-item loading" data-category="poster">
+                    <div class="portfolio-tag">포스터</div>
+                    <div class="portfolio-image">
+                        <img src="토마토-포스터.jpg" alt="토마토 포스터">
+						<img src="starry-night.png" alt="감성일러스트">
+						<img src="감성포스터2.jpg" alt="하늘포스터">
+						<img src="겨울제주.jpg" alt="제주여행">
+						<img src="계란포스터-만들기.jpg" alt="계란일러스트">
+						<img src="레트로 포스터.png" alt="레트로소다포스터">
+						<img src="추파춥스.png" alt="추파춥스 일러스트">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>일러스트와 포토샵을 이용한 포스터들</h3>
+                        <p>감성포스터와 귀여운 일러스트 포스터</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item loading" data-category="poster">
+                    <div class="portfolio-tag">포스터</div>
+                    <div class="portfolio-image">
+                        <img src="웨이브작업물.jpg" alt="음악페스티벌포스터">
+						<img src="하트창작물.jpg" alt="네잎클로버포스터">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>창작 포스터</h3>
+                        <p>주제를 정해 떠오르는 것을 표현한 포스터</p>
+                    </div>
+                </div>
+
+                <!-- 3D랜더링 작업물 -->
+                <div class="portfolio-item loading" data-category="3d">
+                    <div class="portfolio-tag">3D랜더링 작업물</div>
+                    <div class="portfolio-image">
+                        <img src="코랄립밤.jpg" alt="코랄립밤">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>3D 랜더링 작업물</h3>
+                        <p>가상의 립밤 만들기</p>
+                    </div>
+                </div>
+
+          
+
+                <!-- 웹디자인 작업물들 -->
+
+                <div class="portfolio-item loading" data-category="web">
+                    <div class="portfolio-tag">웹디자인</div>
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">🛍️</div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>온라인 쇼핑몰 UI</h3>
+                        <p>사용자 친화적인 쇼핑 경험을 위한 인터페이스 디자인</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-visual">
+                    <div class="profile-circle">HJ</div>
+                </div>
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>안녕하세요, 항상 새로운것에 도전하고싶은 권효진입니다.</p>
+                    <p>관심에서 시작된 작업들을 하나씩 쌓아가고 있습니다.
+마케팅과 콘텐츠 분야에 흥미를 가지고, 직접 만들고 편집하며 배워왔습니다.
+부족한 경험은 꾸준한 실행으로 채워가고 있으며,
+앞으로도 더 나은 결과물을 만들고 싶습니다.양한 영역에서 창작 활동을 하고 있어요. 일상의 소소한 순간들에서 영감을 찾아 따뜻하고 의미있는 디자인을 만들어갑니다.</p>
+                    <p>특히 브랜드가 가진 고유한 이야기를 시각적으로 풀어내는 작업을 좋아하며, 사람들의 마음에 오래 남는 디자인을 추구합니다.</p>
+                    
+                    <div class="skills">
+                        <span class="skill-tag">Photoshop</span>
+                        <span class="skill-tag">Illustrator</span>
+                        <span class="skill-tag">After Effects</span>
+                        <span class="skill-tag">Cinema 4D</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Brand Identity</span>
+                        <span class="skill-tag">Typography</span>
+                        <span class="skill-tag">3D Graphics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <p>새로운 프로젝트나 협업 제안, 언제든 환영합니다</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <span>skyhj5751@naver.com</span>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <span>010-5517-8955</span>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <span>포트폴리오 문의</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Get filter value
+                const filterValue = button.getAttribute('data-filter');
+                
+                // Filter portfolio items
+                portfolioItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    
+                    if (filterValue === 'all' || category === filterValue) {
+                        item.style.display = 'block';
+                        item.style.animation = 'softFadeIn 0.5s ease-out';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 4px 30px rgba(180, 160, 140, 0.2)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.85)';
+                header.style.boxShadow = '0 4px 20px rgba(180, 160, 140, 0.1)';
+            }
+        });
+
+        // Loading animation trigger
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all loading elements
+        document.querySelectorAll('.loading').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Portfolio item click interaction
+        portfolioItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Add a subtle click effect
+                item.style.transform = 'translateY(-12px) scale(1.02)';
+                setTimeout(() => {
+                    item.style.transform = 'translateY(-8px) scale(1)';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>
